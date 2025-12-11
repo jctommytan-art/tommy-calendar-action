@@ -1,0 +1,37 @@
+openapi: 3.0.1
+info:
+  title: Tommy Calendar API
+  version: "1.0"
+servers:
+  - url: https://casatommytan.app.n8n.cloud
+paths:
+  /webhook/create-calendar-event:
+    post:
+      summary: Create a Google Calendar event for Tommy
+      operationId: createCalendarEvent
+      description: Receives event info and creates a Google Calendar event through n8n.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - date
+                - time
+                - title
+              properties:
+                date:
+                  type: string
+                  example: "2025-12-18"
+                time:
+                  type: string
+                  example: "15:00"
+                title:
+                  type: string
+                  example: "看厂房"
+                description:
+                  type: string
+      responses:
+        "200":
+          description: Event created successfully
